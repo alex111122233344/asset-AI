@@ -2,7 +2,8 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { Asset, AssetType, MarketData, ExchangeRate } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY! });
+// The API key is injected by Vite's define config from process.env.API_KEY
+const ai = new GoogleGenAI({ apiKey: (process.env as any).API_KEY || '' });
 
 export const fetchFinanceData = async (assets: Asset[]): Promise<{ prices: MarketData[], rates: { USD: number, JPY: number } }> => {
   const symbols = assets
@@ -51,7 +52,7 @@ export const fetchFinanceData = async (assets: Asset[]): Promise<{ prices: Marke
       }
     });
 
-    const data = JSON.parse(response.text);
+    const data = JSON.parse(response.text || '{}');
     return {
       prices: data.prices || [],
       rates: {
