@@ -1,0 +1,5 @@
+{
+  "name": "Komorebi Assets - 和風資產管理",
+  "description": "A minimalist Japanese-inspired asset management PWA featuring US/Taiwan stocks and cash tracking with real-time currency conversion using Gemini API.",
+  "requestFramePermissions": []
+}
